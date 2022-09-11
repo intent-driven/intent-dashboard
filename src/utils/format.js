@@ -100,7 +100,7 @@ export const formatReportExpectation = (res) => {
       };
     }
 
-    const paramKey = item.oo11.value.split("#")[1];
+    const paramKey = item.rep.value.split("#")[1];
     const type = item.pred.value.split("#")[1];
     // const param = JSON.stringify({
     //   "pp": formatValue(item.pp2 ? item.pp2.value : item.pp1.value),

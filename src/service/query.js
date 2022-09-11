@@ -45,22 +45,21 @@ export const queryReportAndStatus = (intentName) => {
 // query report expectation from intentreport
 export const queryReportExpectation = (intentReportName) => {
   const sql = `
-  SELECT distinct ?i ?expectation ?pred ?target ?p ?oo11 ?pp12 ?value1 ?pp13 ?value2 ?pp14 ?value3 ?ts ?n WHERE {
+  SELECT distinct ?i ?expectation ?target ?rep ?pred ?value1 ?pp13 ?value2 ?pp14 ?value3 ?ts ?n WHERE {
     ?i a icm:IntentReport ;
         icm:hasExpectationReport ?expectation .
      ?i icm:reportTimestamp ?ts .
      ?i icm:reportNumber ?n .
-     ?expectation icm:target ?oo .
-     ?oo ?pp1 ?target .
+     ?expectation icm:target ?target .
+     ?p icm:reportsAbout ?rep .
      ?expectation ?pred ?p .
-     ?p icm:reportsAbout ?oo11 .
      ?p ?pp12 ?value1 .
      ?value1 ?pp13 ?value2 .    
      optional{?value2 ?pp14 ?value3} .
-     filter (?pp12 != icm:reportsAbout)    
+     filter (?prep != icm:reportsAbout)
      filter (?pp12 != rdf:type)
-     #filter (?target != icm:IndividualTarget)
-     filter (?pp13 != rdf:type)
+     filter (regex(str(?value1), "_g_" ))
+     filter (?pp14 != rdf:type)
      filter (?pred = icm:degraded || ?pred = icm:compliant)
      filter (?i = ex:${intentReportName})
 } order by (?expectation) LIMIT 100`;
