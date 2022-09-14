@@ -17,10 +17,10 @@ const Index = () => {
         color="text.primary"
         gutterBottom
       >
-        Intent API Example
+        Intent Dashboard
       </Typography>
       <Typography variant="h5" align="center" color="text.secondary" component="p">
-        Intent API Description.
+        Intent-driven autonomous networks Catalyst.
       </Typography>
     </Container>
     <Container maxWidth="md" component="main" sx={{mt: 2, mb:2}}>
